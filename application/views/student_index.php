@@ -88,6 +88,9 @@
 					<a class="nav-link active" data-toggle="tab" href="#menu3">ประวัติการฉีดวัคซีน</a>
 				</li>
 			<?php } ?>
+			<li class="nav-item">
+				<a class="nav-link" href="<?= site_url('vaccine_parent'); ?>">ประวัติการฉีดวัคซีนผู้ปกครอง</a>
+			</li>
 
 			<li class="nav-item ml-auto">
 				<a class="nav-link disabled"><?= $users_std->firstname . ' ' . $users_std->lastname ?></a>

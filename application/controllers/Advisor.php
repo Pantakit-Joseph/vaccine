@@ -32,6 +32,15 @@ class Advisor extends CI_Controller
         $this->load->view('pdf/vaccine_group', $data);
 	}
 
+	public function report_parent()
+	{
+		$this->load->model('Parent_model', 'parent');
+		$data = $this->parent->parent_vac($this->input->get('group_id'));
+		date_default_timezone_set('Asia/Bangkok');
+		$this->load->library('tothai');
+		$this->load->view('pdf/parent_vac', $data);
+	}
+
     public function std_vac()
     {
         $data['group'] = $this->advisor->std_vac(

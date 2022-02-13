@@ -32,7 +32,8 @@ class Auth extends CI_Controller
 
 			$this->auth->login(
 				$this->form_validation->set_value('student_id'));
-			redirect(site_url('form/check'));
+			// redirect(site_url('form/check'));
+			redirect(site_url('form'));
 		} else {
 			// redirect(site_url());
 			$this->load->view('login');

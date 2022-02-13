@@ -1,24 +1,29 @@
 <html>
-    <head>
-    <title>Check Vaccine</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<head>
+	<title>Check Vaccine</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        .card {
-        margin: 0 auto; /* Added */
-        margin-top:50px;
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-        width:500px;
-        }
-    </style>
-    </head>
-<body>  
-<?php
+	<style>
+		.card {
+			margin: 0 auto;
+			/* Added */
+			margin-top: 50px;
+			float: none;
+			/* Added */
+			margin-bottom: 10px;
+			/* Added */
+			width: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<?php
 	$submit = $this->session->flashdata('submit');
 	if (isset($submit)) {
 		if ($submit->status === 1) {
@@ -60,13 +65,18 @@
 			})
 		}
 	</script>
-    <div class="container">
-        <div class="card shadow p-3 mb-5 bg-white rounded ">
-            <div class="card-header bg-info text-white">
-            ยังไม่ได้รับวัคซีน
-			<a class="float-right btn btn-sm btn-info" onclick="logoutConfirm()">Logout</a>
-            </div>
-            <div class="card-body">
+	<div class="container">
+		<div class="card shadow p-3 mb-5 bg-white rounded ">
+			<div class="card-header bg-info text-white">
+				ยังไม่ได้รับวัคซีน
+				<a class="float-right btn btn-sm btn-info" onclick="logoutConfirm()">Logout</a>
+			</div>
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link" href="<?= site_url('vaccine_parent'); ?>">ประวัติการฉีดวัคซีนผู้ปกครอง</a>
+				</li>
+			</ul>
+			<div class="card-body">
 				<form action="<?= site_url('status_vac/not_vaccine') ?>" method="post">
 					<div class="input-group">
 						<div class="input-group-prepend">
@@ -84,9 +94,10 @@
 						</div>';
 				}
 				?>
-            </div>
-        </div>    
-    </div>
+			</div>
+		</div>
+	</div>
 
 </body>
+
 </html>

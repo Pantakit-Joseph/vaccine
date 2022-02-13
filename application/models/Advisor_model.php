@@ -35,6 +35,11 @@ class Advisor_model extends CI_Model
             $group->c1 = 0;
             $group->c0 = 0;
             $group->c = 0;
+
+			$group->pall = 0;
+			$group->p0 = 0;
+			$group->p1 = 0;
+			$group->p2 = 0;
             foreach ($group->std as $std) {
                 $sql_vac = "SELECT `id`,`consent` FROM `vaccine` WHERE `user_id`=?;";
                 // $sql_vac = "SELECT `vaccine`.`id`,`vaccine`.`consent`,
@@ -97,7 +102,19 @@ class Advisor_model extends CI_Model
 					$group->c++;
 				}
 				
-
+				$sql_parent = "SELECT * FROM `vaccine_parent` WHERE `student_id`=?";
+				$query_parent = $this->db->query($sql_parent, $std->user_id);
+				$std->parent = $query_parent->row();
+				if (isset($std->parent->parent_vacine)) {
+					if ($std->parent->parent_vacine === '1') {
+						$group->p1++;
+					} elseif ($std->parent->parent_vacine === '0') {
+						$group->p0++;
+					}
+				} else {
+					$group->p2++;
+				}
+				$group->pall++;
             }
         }
         return $data;
